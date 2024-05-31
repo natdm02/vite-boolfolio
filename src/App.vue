@@ -4,11 +4,18 @@ import axios from 'axios';
 
 export default {
   name:'App',
+
+  data(){
+    return {
+      projects: []
+    }
+  },
+
   methods: {
     getApi(){
       axios.get(store.apiUrl + 'projects')
         .then(results => {
-          console.log(results.data);
+          this.projects(results.data);
         })
     }
   },
@@ -20,8 +27,13 @@ export default {
 </script>
 
 <template>
-  <div class="container bg-dark">
-    <h1 class="text-warning">ciao</h1>
+  <div class="container bg-dark text-light">
+    <h1 class="text-warning">lista</h1>
+    <ul>
+      <li v-for="project in projects"
+      :key="project.id"></li>
+      <span>{{project.name}}</span>
+    </ul>
   </div>
 </template>
 
