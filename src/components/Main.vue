@@ -23,9 +23,12 @@ methods: {
         axios.get(store.apiUrl + 'projects')
             .then(results => {
                 this.projects = results.data;
+                this.results = results.data;
+                    console.log(this.projects);
+                    console.log(results.data);
             })
     }
-    
+
 },
 
 mounted() {
