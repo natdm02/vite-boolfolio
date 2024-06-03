@@ -1,6 +1,7 @@
 <script>
 import axios from 'axios';
 import {store} from '../data/store.js';
+import Card from './partials/Card.vue'
 
 
 
@@ -8,6 +9,9 @@ import {store} from '../data/store.js';
 export default {
 
 name: 'Main',
+components:{
+    Card,
+},
 
 data() {
     return {
@@ -49,6 +53,17 @@ mounted() {
             <div class="gif-container d-flex justify-content-center">
                 <img class="w-25" src="https://upload.wikimedia.org/wikipedia/commons/8/81/Portfolio_.gif" alt="portfolio-gif">
             </div>
+        </div>
+        <div class="container">
+                <div class="row row-cols-5 py-2">
+                    <Card
+                    v-for="project in projects"
+                    :key="project.id"
+                    :title="project.name"
+                    :type="project.type.name"
+                    :technologies="project.technologies"
+                    :status="project.is_closed"/>
+                </div>
         </div>
         
     </main>
