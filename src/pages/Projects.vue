@@ -1,7 +1,8 @@
 <script>
 import axios from 'axios';
 import {store} from '../data/store.js';
-import Card from '../components/partials/Card.vue'
+import Card from '../components/partials/Card.vue';
+
 export default {
     name: 'Projects',
     components: {
@@ -44,7 +45,8 @@ export default {
             :title="project.name"
             :type="project.type.name"
             :technologies="project.technologies"
-            :status="project.is_closed"/>
+            :status="project.is_closed"
+            :slug="project.slug"/>
         </div>
     </div>
 </template>

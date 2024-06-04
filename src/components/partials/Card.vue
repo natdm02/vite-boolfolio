@@ -5,7 +5,8 @@ export default {
     title: String,
     type: String,
     technologies: Array,
-    status: Number
+    status: Number,
+    slug: String
     }
 }
 </script>
