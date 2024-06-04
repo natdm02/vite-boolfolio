@@ -10,27 +10,32 @@ export default {
             email: '',
             message: '',
             errors: {},
+            sending: false,
+            success: false,
         }
     },
     methods: {
         sendForm(){
+            this.sending = true;
             const data = {
                 name: this.name,
                 email: this.email,
-                message: this.message
+                message: this.message,
             }
-            console.log(data);
+            
 
             axios.post(store.apiUrl + 'contacts', data)
                 .then(result => {
-                    this.errors = result.data.errors;
+                    this.success = result.data.success;
                     if(!result.data.success) {
                         this.errors = result.data.errors;
                     }else {
                         this.errors = {};
                     }
-                    console.log(result.data);
-                    console.log(result.data.errors);
+                    this.sending = false;
+                    console.log('result.data', result.data);
+                    console.log('result.data success', result.data.success);
+                    console.log('result.data errors', result.data.errors);
                 })
         }
     }
@@ -38,8 +43,8 @@ export default {
 </script>
 
 <template>
-<div class="container rc-form rounded-2">
-    <form @submit.prevent="sendForm()" class="p-3">
+<div class="container">
+    <form v-if="!success" @submit.prevent="sendForm()" class="p-3 rc-form rounded-2">
 
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
@@ -60,9 +65,20 @@ export default {
             </div>
 
             <div class="d-flex justify-content-center">
-                <button type="submit" class="btn btn-primary">Send <i class="fa-solid fa-paper-plane fa-lg"></i></button>
+                <button v-if="sending" type="submit" class="btn btn-primary">
+                    Sending... <i class="fa-solid fa-hourglass-start fa-spin"></i>
+                </button>
+                <button v-else type="submit" class="btn btn-primary" :disabled="sending">
+                    Send <i class="fa-solid fa-paper-plane fa-lg"></i>
+                </button>
             </div>
         </form>
+        
+        <div v-else class="container d-flex justify-content-center">
+            <div  class="alert alert-success w-25 my-4" role="alert">
+                    <h5 class="text-center">Form successfully sent  &nbsp; <i class="fa-regular fa-thumbs-up fa-bounce fa-lg"></i></h5>
+            </div>
+        </div>
     </div>
 </template>
 
