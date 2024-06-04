@@ -19,6 +19,11 @@ export default {
                 message: this.message
             }
             console.log(data);
+            
+            axios.post(store.apiUrl + 'contacts', data)
+                .then(result => {
+                    console.log(result.data);
+                })
         }
     }
 }
