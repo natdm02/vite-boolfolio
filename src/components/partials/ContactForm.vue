@@ -9,6 +9,7 @@ export default {
             name: '',
             email: '',
             message: '',
+            errors: {},
         }
     },
     methods: {
@@ -19,10 +20,17 @@ export default {
                 message: this.message
             }
             console.log(data);
-            
+
             axios.post(store.apiUrl + 'contacts', data)
                 .then(result => {
+                    this.errors = result.data.errors;
+                    if(!result.data.success) {
+                        this.errors = result.data.errors;
+                    }else {
+                        this.errors = {};
+                    }
                     console.log(result.data);
+                    console.log(result.data.errors);
                 })
         }
     }
@@ -35,17 +43,20 @@ export default {
 
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
-                <input v-model.trim="name" type="text" name="name" id="" class="form-control" placeholder="Type your Fullname">
+                <input v-model.trim="name" :class="{ 'is-invalid' : errors.name }" type="text" class="form-control" placeholder="Type your Fullname">
+                <p v-for="(error, index) in errors.name" :key="index" class="text-danger fs-6 ms-2"><i class="fa-solid fa-circle-exclamation"></i> {{ error }}</p>
             </div>
 
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input v-model.trim="email" type="email" name="email" id="" class="form-control" placeholder="Type your Email">
+                <input v-model.trim="email" :class="{ 'is-invalid' : errors.email }" type="email" name="email" id="" class="form-control" placeholder="Type your Email">
+                <p v-for="(error, index) in errors.name" :key="index" class="text-danger fs-6 ms-2"><i class="fa-solid fa-circle-exclamation"></i> {{ error }}</p>
             </div>
 
             <div class="form-floating mb-4">
                 <p>Message</p>
-                <textarea v-model.trim="message" name="message" id="" class="form-control" style="height: 150px; width: 100%;"></textarea>
+                <textarea v-model.trim="message" :class="{ 'is-invalid' : errors.message }" class="form-control" style="height: 150px; width: 100%;"></textarea>
+                <p v-for="(error, index) in errors.name" :key="index" class="text-danger fs-6 ms-2"><i class="fa-solid fa-circle-exclamation"></i> {{ error }}</p>
             </div>
 
             <div class="d-flex justify-content-center">
