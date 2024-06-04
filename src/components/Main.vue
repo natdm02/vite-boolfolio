@@ -1,6 +1,6 @@
 <script>
-import Home     from '../pages/Home.vue'
-import Projects from '../pages/Projects.vue'
+//import Home     from '../pages/Home.vue'
+//import Projects from '../pages/Projects.vue'
 
 
 
@@ -9,10 +9,10 @@ import Projects from '../pages/Projects.vue'
 export default {
 
 name: 'Main',
-components:{
-    Home,
-    Projects,
-}
+//components:{
+//   Home,
+//   Projects,
+//}
 }
 
 </script>
@@ -25,9 +25,9 @@ components:{
     </router-view>
 
     </main>
-    
+
 </template>
 
 
-<style lang="scss" scoped>
+<style>
 </style>
