@@ -35,13 +35,12 @@ export default {
 <template>
     <Loader v-if="!loaded"/>
     <div v-else class="container my-3">
-            <h2 class="text-center text-primary fw-bold my-4">
-                <span class="text-primary">Project:</span> {{ project.name }}
+        <h2 class="text-center my-4">
+                <span class="text-primary fw-bold">Project:</span> {{ project.name }}
             </h2>
-            <!-- FIX -->
-            <!-- <div class="container d-flex justify-content-center mb-2">
-                <img :src=project.image_path class="w-25">
-            </div> -->
+            <h5>
+                <span class="text-primary">Description::</span> {{ project.category }}
+            </h5>
             <h5>
                 <span class="text-primary">Category:</span> {{ project.category }}
             </h5>
@@ -63,7 +62,7 @@ export default {
 
 
             <div class="text-center py-3">
-                <router-link  class="btn btn-success" :to="{'name' : 'projects'}">Back to view</router-link>
+                <router-link  class="btn btn-primary" :to="{'name' : 'projects'}">Back to view</router-link>
             </div>
 
     </div>

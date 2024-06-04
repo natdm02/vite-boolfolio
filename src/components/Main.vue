@@ -1,18 +1,10 @@
 <script>
-//import Home     from '../pages/Home.vue'
-//import Projects from '../pages/Projects.vue'
-
-
-
 
 
 export default {
 
 name: 'Main',
-//components:{
-//   Home,
-//   Projects,
-//}
+
 }
 
 </script>
