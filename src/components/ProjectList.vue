@@ -1,15 +1,24 @@
 <script>
 
+import axios from 'axios';
+
 export default {
   name: "ProjectList",
   data() {
     return {
-      projects: [
-        { id: 1, name: "project 1"},
-        { id: 2, name: "project 2"},
-      ],
+      projects: [],
     };
   },
+  created() {
+    axios
+      .get("http://127.0.0.1:8000/api/projects")
+      .then(response => {
+        this.projects = response.data;
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }
 };
 
     
