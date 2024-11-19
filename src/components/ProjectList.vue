@@ -13,19 +13,25 @@ export default {
       projects: [],
     };
   },
-  created() {
-    this.fetchProjects();
-  },
-  methods: {
-    fetchProjects() {
-      axios.get('http://127.0.0.1:8000/api/projects')
-        .then(response => {
-          this.projects = response.data;
-        })
-        .catch(error => {
-          console.error("Error fetching projects:", error);
-        });
-    }
+  // created() {
+  //   this.fetchProjects();
+  // },
+  // methods: {
+  //   fetchProjects() {
+  //     axios.get('http://127.0.0.1:8000/api/projects')
+  //       .then(response => {
+  //         this.projects = response.data;
+  //       })
+  //       .catch(error => {
+  //         console.error("Error fetching projects:", error);
+  //       });
+//  }
+  mounted() {
+    fetch('http://127.0.0.1:8000/api/projects')
+      .then(response => response.json())
+      .then(data => {
+        this.projects = data;
+      });
   }
 };
 
@@ -33,15 +39,16 @@ export default {
 
 
 <template>
-  
+
   <div class="project-list">
 
     <h1>Lista dei Progetti</h1>
 
-    <div v-for="project in projects" :key="project.id">
-      <ProjectCard :project="project" />
-    </div>
-  
+    <ul>
+      <li v-for="project in projects" :key="project.id">
+        <router-link :to="'/projects/' + project.id">{{ project.name }}</router-link>
+      </li>
+    </ul>
 
   </div>
 
