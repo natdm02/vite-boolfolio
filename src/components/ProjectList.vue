@@ -4,6 +4,9 @@ import axios from 'axios';
 
 export default {
   name: "ProjectList",
+  components: {
+    ProjectCard,
+  },
   data() {
     return {
       projects: [],

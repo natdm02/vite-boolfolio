@@ -12,11 +12,20 @@ export default {
 
 
 <template>
+
     <div class="project-card">
       <h3>{{ project.name }}</h3>
       <p>{{ project.description }}</p>
+      <p><strong>Tipo:</strong> {{ project.type.name }}</p>
+      <p>
+        <strong>Tecnologie:</strong>
+        <span v-for="tech in project.technologies" :key="tech.id">
+        {{ tech.name }}
+        </span>
+      </p>
     </div>
-  </template>
+
+</template>
   
   
   <style scoped>
