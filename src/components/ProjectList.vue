@@ -1,4 +1,5 @@
 <script>
+
 import ProjectCard from './ProjectCard.vue';
 import axios from 'axios';
 
@@ -28,17 +29,11 @@ export default {
   }
 };
 
-    
-
-
-
 </script>
 
+
 <template>
-
-
-
- 
+  
   <div class="project-list">
 
     <h1>Lista dei Progetti</h1>
@@ -49,9 +44,6 @@ export default {
   
 
   </div>
-
-
-
 
 </template>
 

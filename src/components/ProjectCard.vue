@@ -14,6 +14,7 @@ export default {
 <template>
 
     <div class="project-card">
+      <img :src="project.image" alt="Project Image" class="project-image" v-if="project.image" />
       <h3>{{ project.name }}</h3>
       <p>{{ project.description }}</p>
       <p><strong>Tipo:</strong> {{ project.type.name }}</p>
@@ -29,11 +30,19 @@ export default {
   
   
   <style scoped>
+
   .project-card {
-    background-color: #e0f7fa;
+    background-color: #646868;
     padding: 15px;
     margin: 10px 0;
     border: 1px solid #b2ebf2;
     border-radius: 5px;
   }
+
+  .project-image {
+    max-width: 300px;
+    height: auto;
+    border-radius: 8px;
+}
+
   </style>
