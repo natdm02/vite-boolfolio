@@ -6,6 +6,15 @@ export default {
       type: Object,
       required: true,
     },
+    
+  },
+  computed: {
+    computedImage() {
+      console.log("Image URL:", this.project.image);
+      return this.project.image.startsWith('http')
+        ? this.project.image
+        : `/storage/${this.project.image}`;
+    },
   },
 };
 </script>
@@ -40,9 +49,10 @@ export default {
   }
 
   .project-image {
-    max-width: 300px;
+    max-width: 100%;
     height: auto;
     border-radius: 8px;
+    display:block;
 }
 
   </style>

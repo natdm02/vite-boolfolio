@@ -46,7 +46,7 @@ export default {
 
     <ul>
       <li v-for="project in projects" :key="project.id">
-        <router-link :to="'/projects/' + project.id">{{ project.name }}</router-link>
+        <router-link :to="'/project/' + project.id">{{ project.name }}</router-link>
       </li>
     </ul>
 

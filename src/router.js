@@ -10,11 +10,11 @@ const routes = [
     component: Home,
   },
   { path: '/projects', 
-    name: 'ProjectsList',
+    name: 'ProjectList',
     component: ProjectsList ,
   },
   {
-    path: '/project/:id',
+    path: '/projects/:id',
     name: 'ProjectDetail',
     component: ProjectDetail,
     props: true ,
