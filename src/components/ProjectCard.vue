@@ -23,7 +23,7 @@ export default {
 <template>
 
     <div class="project-card">
-      <img :src="project.image.startsWith('http') ? project.image : `/storage/${project.image}`" alt="Project Image" />
+      <img :src="computedImage" alt="Project Image" />
       <h3>{{ project.name }}</h3>
       <p>{{ project.description }}</p>
       <p><strong>Tipo:</strong> {{ project.type.name }}</p>

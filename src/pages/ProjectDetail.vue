@@ -1,36 +1,31 @@
 <script>
-import axios from 'axios';
+import { onMounted, ref } from 'vue';
+import { useRoute } from 'vue-router';
 
 export default {
-props: ['id'], 
-  data() {
-    return {
-      project: null,
-      loading: true,
-    };
-  },
-  mounted() {
-    this.fetchProjectDetail();
-  },
-  methods: {
-    fetchProjectDetail() {
-      axios.get(`http://127.0.0.1:8000/api/projects/${this.id}`)
-        .then(response => {
-          this.project = response.data;
-          this.loading = false;
-        })
-        .catch(error => {
-          console.error(error);
-          this.loading = false;
+  name: 'ProjectDetails',
+  setup() {
+    const project = ref(null);
+    const route = useRoute();
+
+    onMounted(() => {
+      fetch(`http://127.0.0.1:8000/api/projects/${route.params.id}`)
+        .then(response => response.json())
+        .then(data => {
+          project.value = data;
         });
-    },
+    });
+
+    return {
+      project,
+    };
   },
 };
 
 </script>
 
 <template>
-    <div v-if="loading">
+    <!-- <div v-if="loading">
     <h1>Caricamento del progetto...</h1>
   </div>
   <div v-else>
@@ -48,6 +43,12 @@ props: ['id'],
         </ul>
       </div>
     </div>
+</div> -->
+
+<div>
+    <h1>{{ project.name }}</h1>
+    <p>{{ project.description }}</p>
+    <img :src="project.image ? project.image : '/storage/default-image.jpg'" alt="Project Image" />
 </div>
 </template>
 
@@ -63,11 +64,6 @@ props: ['id'],
   height: auto;
   max-width: 500px;
 }
-.project-card img {
-  max-width: 100%;
-  height: auto;
-  max-height: 300px;
-  object-fit: cover;
-}
+
 
 </style>

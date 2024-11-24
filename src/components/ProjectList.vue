@@ -46,7 +46,9 @@ export default {
 
     <ul>
       <li v-for="project in projects" :key="project.id">
-        <router-link :to="'/project/' + project.id">{{ project.name }}</router-link>
+        <img :src="project.image ? project.image : '/storage/default-image.jpg'" alt="Project Image" class="project-image" />
+        <h2>{{ project.name }}</h2>
+        <router-link :to="`/project/${project.id}`">Dettagli</router-link>
       </li>
     </ul>
 
@@ -75,5 +77,10 @@ export default {
 .project-item p {
   color: #555;
 }
-
+.project-image {
+  max-width: 100px;
+  height: auto;
+  display: block;
+  margin-bottom: 10px;
+}
 </style>
