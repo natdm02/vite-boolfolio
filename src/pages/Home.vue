@@ -11,86 +11,115 @@ export default {
 
 <template>
 
-  <div class="hero-container">
-    <div class="hero-content text-center text-white">
-      <h1 class="display-3 fw-bold"> Ciao! Sono <span class="highlight">Natalì</span></h1>
-        <p class="lead"> Sviluppo applicazioni web moderne e dinamiche. Scopri di più sui miei progetti e sulle mie competenze</p>
-          <div class="hero-buttons mt-4">
-            <router-link to="/projects" class="btn btn-outline-light btn-lg me-3">Guarda i Progetti</router-link>
-            <router-link to="/github-projects" class="btn btn-light btn-lg">Vai su GitHub</router-link>
-          </div>
-    </div>
+<div>
+    <!-- Hero Section -->
+    <section class="hero d-flex justify-content-between align-items-center">
+      <div class="hero-text">
+        <h1>Hello! I'm <span class="highlight">Natali Di Marino</span></h1>
+        <p class="lead">Fullstack Web Developer</p>
+        <div class="mt-4">
+          <router-link to="/projects" class="btn btn-custom btn-lg me-3">Guarda i Progetti</router-link>
+          <a href="https://github.com" class="btn btn-outline-light btn-lg">Vai su GitHub</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="/src/assets/img/img1.webp" alt="Natali">
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="divider"></div>
+
+    <!-- About Me Section -->
+    <section class="about d-flex align-items-center justify-content-between">
+      <img src="/src/assets/img/img2.webp" alt="About Natali" class="about-image">
+      <div class="info">
+        <h2>About Me</h2>
+        <p>Hi! I'm Natali, a passionate Fullstack Web Developer who loves creating modern and dynamic web applications. I specialize in bringing ideas to life with clean and efficient code.</p>
+        <ul>
+          <li><strong>Email:</strong> natalidimarino@gmail.com</li>
+          <li><strong>LinkedIn:</strong> <a href="https://linkedin.com" target="_blank" style="color: #f39c12;">Visit my profile</a></li>
+          <li><strong>Projects Completed:</strong> 70</li>
+        </ul>
+        <a href="/src/assets/img/CV Di Marino Natali.pdf" class="btn btn-custom">Scarica il CV</a>
+      </div>
+    </section>
   </div>
 
 </template>
 
 <style scoped>
 
-.hero-container {
-  position: relative;
-  height: 100vh;
+body {
+  background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
+  color: white;
+  font-family: 'Poppins', Arial, sans-serif;
+}
+.hero {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  overflow: hidden;
-  background: linear-gradient(135deg, #1d1f21, #3e4c59);
+  padding: 50px;
+  height: 100vh;
+}
+.hero-text {
+  max-width: 50%;
+  text-align: left;
+}
+.hero-text h1 {
+  font-size: 3.5rem;
+  font-weight: bold;
+}
+.hero-text .highlight {
+  color: #f39c12;
+}
+.hero-image img {
+  width: 450px;
+  border-radius: 20px;
+}
+.divider {
+  height: 4px;
+  background: linear-gradient(to right, #f39c12, transparent);
+  margin: 50px 0;
+}
+.about {
+  padding: 50px;
+}
+.about img {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.about .info {
+  margin-left: 20px;
+}
+.about .info h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+.about .info ul {
+  list-style: none;
+  padding: 0;
+}
+.about .info ul li {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+.about .info ul li strong {
+  color: #f39c12;
+}
+.btn-custom {
+  background-color: #f39c12;
+  color: white;
+  border: none;
+  font-size: 1.2rem;
+  padding: 10px 20px;
+}
+.btn-custom:hover {
+  background-color: #d87b0a;
 }
 
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 800px;
-}
-
-.hero-content h1 {
-  font-size: 3rem;
-}
-
-.hero-content .highlight {
-  color: #007bff;
-  text-shadow: 0 0 10px rgba(0, 123, 255, 0.8);
-  animation: glow 2s infinite alternate;
-}
-
-@keyframes glow {
-  from {
-    text-shadow: 0 0 10px rgba(0, 123, 255, 0.8), 0 0 20px rgba(0, 123, 255, 0.6);
-  }
-  to {
-    text-shadow: 0 0 20px rgba(0, 123, 255, 1), 0 0 30px rgba(0, 123, 255, 0.8);
-  }
-}
-
-.hero-buttons .btn {
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.hero-buttons .btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
-}
-
-
-.background-animation {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
-  animation: rotate 10s infinite linear;
-  z-index: 1;
-  filter: blur(80px);
-}
-
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 </style>
 
 

@@ -37,15 +37,7 @@ export default {
     <div v-else>
       <ul>
         <li v-for="project in projects" :key="project.id" class="project-item">
-          <img
-          :src="project.image 
-    ? (project.image.startsWith('http') 
-        ? project.image 
-        : `/storage/${project.image}`) 
-    : '/storage/default-image.jpg'"
-  alt="Project Image"
-  class="project-image"
-          />
+          <img :src="project.image ? (project.image.startsWith('http') ? project.image : `/storage/${project.image}`) : '/storage/default-image.jpg'" alt="Project Image" class="project-image"/>
           <h2>{{ project.name }}</h2>
           <p>{{ project.description }}</p>
           <router-link :to="`/projects/${project.id}`">Dettagli</router-link>
